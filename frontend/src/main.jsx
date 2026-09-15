@@ -4,7 +4,10 @@ import { Check, X } from "lucide-react";
 import "./styles.css";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3333";
+  (import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3333").replace(
+    /\/+$/,
+    "",
+  );
 const officeOrder = ["presidente", "governador"];
 
 const fallbackByOffice = {

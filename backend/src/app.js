@@ -12,7 +12,10 @@ const DEFAULT_ALLOWED_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173
 
 function parseAllowedOrigins(value) {
   if (!value) return DEFAULT_ALLOWED_ORIGINS;
-  return value.split(",").map((origin) => origin.trim()).filter(Boolean);
+  return value
+    .split(",")
+    .map((origin) => origin.trim().replace(/\/+$/, ""))
+    .filter(Boolean);
 }
 
 function registerCors(app, allowedOrigins) {
